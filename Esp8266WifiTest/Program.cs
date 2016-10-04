@@ -84,15 +84,42 @@ namespace Esp8266WifiTest
                 {
                     case EspCommandType.SetReset:
                         break;
+
                     case EspCommandType.SetEchoType:
                         break;
+
                     case EspCommandType.SetWifiMode:
                         break;
+
                     case EspCommandType.GetVersion:
-                        lcdLine2 = response.result[0].ToString();
+                        if (response.result != null)
+                            lcdLine2 = response.result[0].ToString();
                         refleshLCD = true;
+
                         break;
                     case EspCommandType.Ping:
+
+                        break;
+
+                    case EspCommandType.GetListAP:
+                        if (response.result != null)
+                        {
+                            foreach (var item in response.result)
+                            {
+                                if (item.ToString().Length > 10)
+                                {
+                                    var paramsWifi = item.ToString().Split(new char[] { ',' });
+                                    if (paramsWifi.Length > 1)
+                                    {
+                                        lcdLine2 = paramsWifi[1];
+                                        refleshLCD = true;
+                                        Thread.Sleep(5000);
+                                    }
+                                }
+
+                            }
+                        }
+
                         break;
                     default:
                         break;
@@ -134,6 +161,10 @@ namespace Esp8266WifiTest
             if(KeyCode == 7)
             {
                 esp8266.GetVersion();
+            }
+            if(KeyCode == 8)
+            {
+                esp8266.GetListAP();
             }
         }
 

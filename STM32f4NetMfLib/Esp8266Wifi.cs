@@ -17,6 +17,7 @@ namespace STM32f4NetMfLib
         SetWifiMode,
         GetVersion,
         Ping,
+        GetListAP,
     }
 
     public enum EspCommandStatus
@@ -24,7 +25,8 @@ namespace STM32f4NetMfLib
         Error,
         OK,
         ResultList,
-        NoChange
+        NoChange,
+        Timeout
     }
 
     public class Esp8266WifiResponse
@@ -98,19 +100,50 @@ namespace STM32f4NetMfLib
         private void DisassemblyCommand()
         {
             bool isValid = false;
-            int pos = 0;
             string[] data;
 
             if (_rxBuffer.LastIndexOf("OK") != -1)
             {
-
-                if(_commandContext.command == EspCommandType.GetVersion)
+                switch (_commandContext.command)
                 {
-                    _commandContext.result = new ArrayList();
-                    data = _rxBuffer.Split(new char[] { '\r', '\n' });
+                    case EspCommandType.SetReset:
 
-                    _commandContext.result.Add(data[0]);
+                        break;
+                    case EspCommandType.SetEchoType:
+
+                        break;
+                    case EspCommandType.SetWifiMode:
+
+                        break;
+                    case EspCommandType.GetVersion:
+
+                        _commandContext.result = new ArrayList();
+                        data = _rxBuffer.Split(END.ToCharArray());
+
+                        _commandContext.result.Add(data[0]);
+
+                        break;
+                    case EspCommandType.Ping:
+
+                        break;
+                    case EspCommandType.GetListAP:
+                        _commandContext.result = new ArrayList();
+                        data = _rxBuffer.Split(END.ToCharArray());
+
+                        foreach (var d in data)
+                        {
+                            if (d != "")
+                            {
+                                _commandContext.result.Add(d);
+                            }
+                        }
+
+                        break;
+
+                    default:
+                        break;
                 }
+
 
                 _commandContext.status = EspCommandStatus.OK;
 
@@ -138,7 +171,10 @@ namespace STM32f4NetMfLib
                 isValid = true;
             }
 
-
+            if (_commandContext.result != null)
+            {
+                _commandContext.result.Clear();
+            }
 
             if (isValid)
             {
@@ -161,8 +197,9 @@ namespace STM32f4NetMfLib
 
         private void OnTimeOut(object state)
         {
-            Debug.Print("Timeout RX");
-            Debug.Print("Receiver data: " + _rxBuffer);
+            _commandContext.status = EspCommandStatus.Timeout;
+
+            OnCommandResult(_commandContext);
 
             tmrTimeout.Change(Timeout.Infinite, Timeout.Infinite);
         }
@@ -232,7 +269,9 @@ namespace STM32f4NetMfLib
 
         public void GetListAP()
         {
-            string cmd = ATPLUS + END;
+            _commandContext.command = EspCommandType.GetListAP;
+            string cmd = ATPLUS + CMD_CWLAP + END;
+            SendAtData(cmd);
         }
 
         public void SetMode(WifiModeType mode)
