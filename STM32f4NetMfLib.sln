@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pcf8574LCD1602Test", "Pcf85
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyBoardMatrixTest", "KeyBoardMatrixTest\KeyBoardMatrixTest.csproj", "{2F5ACEA8-02DB-4DEB-AB53-04E866A5256E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esp8266WifiTest", "Esp8266WifiTest\Esp8266WifiTest.csproj", "{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{2F5ACEA8-02DB-4DEB-AB53-04E866A5256E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F5ACEA8-02DB-4DEB-AB53-04E866A5256E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F5ACEA8-02DB-4DEB-AB53-04E866A5256E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,5 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6740B215-DD7E-4C61-9106-BF6F7DC43647} = {CDC98B99-42CA-4BB7-B8CD-A0EE7585BBDD}
 		{2F5ACEA8-02DB-4DEB-AB53-04E866A5256E} = {CDC98B99-42CA-4BB7-B8CD-A0EE7585BBDD}
+		{156CD2B3-F0AC-4787-8545-EF14D0CBC50C} = {CDC98B99-42CA-4BB7-B8CD-A0EE7585BBDD}
 	EndGlobalSection
 EndGlobal
