@@ -10,8 +10,13 @@ namespace Pcf8574LCD1602Test
     public class Program
     {
         private static bool flag;
+        //private static readonly DS1307 Ds1307 = new DS1307();
+
         public static void Main()
         {
+
+            //DateTime dt = Ds1307.GetDateTime();
+            //Utility.SetLocalTime(dt);
 
             System.Threading.Timer tmrClock = new System.Threading.Timer(new TimerCallback(OnClock), null, 5000, 1000);
 
@@ -23,6 +28,8 @@ namespace Pcf8574LCD1602Test
                 lcd.Begin(16, 2);
 
                 lcd.Clear();
+
+                Thread.Sleep(2000);
 
                 lcd.Write("STM32F4NetMFLib");
                 lcd.SetCursorPosition(0, 1);

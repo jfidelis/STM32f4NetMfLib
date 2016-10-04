@@ -30,10 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DS1307.cs" />
+    <Compile Include="KeyBoard.cs" />
     <Compile Include="Pcf8574.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Common">
+      <HintPath>Libs\Common.dll</HintPath>
+    </Reference>
     <Reference Include="MicroLiquidCrystal">
       <HintPath>Libs\MicroLiquidCrystal.dll</HintPath>
     </Reference>
