@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DS1307.cs" />
+    <Compile Include="EepromAT24C32.cs" />
     <Compile Include="Esp8266Wifi.cs" />
     <Compile Include="KeyBoard.cs" />
     <Compile Include="LCDili9341\Commands.cs" />
