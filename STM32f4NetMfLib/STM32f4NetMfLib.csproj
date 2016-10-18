@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,9 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BasicTypeDeSerializer.cs" />
+    <Compile Include="BasicTypeSerializer.cs" />
     <Compile Include="DS1307.cs" />
     <Compile Include="EepromAT24C32.cs" />
     <Compile Include="Esp8266Wifi.cs" />
+    <Compile Include="JsonHelpers.cs" />
     <Compile Include="KeyBoard.cs" />
     <Compile Include="LCDili9341\Commands.cs" />
     <Compile Include="LCDili9341\Driver.cs" />
