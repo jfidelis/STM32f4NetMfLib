@@ -69,11 +69,11 @@ namespace STM32f4NetMfLib
                 Debug.GC(true);
             }
         }
-        //private void StoreToFile(byte data)
-        //{
-        //    _file.WriteByte(data);
-        //    _currentIndex++;
-        //}
+        private void StoreToFile(byte data)
+        {
+            //_file.WriteByte(data);
+            _currentIndex++;
+        }
         public byte[] GetBuffer(ref int contentSize)
         {
             if (_serializeBuffer == null)
